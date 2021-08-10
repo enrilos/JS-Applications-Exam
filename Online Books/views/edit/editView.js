@@ -30,8 +30,8 @@ async function submitHandler(context, id, e) {
 async function getView(context) {
     const id = context.params.id;
     const book = await bookService.get(id);
-    const bindedSubmitHandler = submitHandler.bind(null, context, id);
-    context.renderView(editTemplate(book, bindedSubmitHandler));
+    const boundSubmitHandler = submitHandler.bind(null, context, id);
+    context.renderView(editTemplate(book, boundSubmitHandler));
 }
 
 export default {

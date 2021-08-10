@@ -21,7 +21,7 @@ async function getView(context) {
     const book = await bookService.get(id);
     const isOwner = book._ownerId === authApi.getUserId();
 
-    const bindedLikeHandler = likeHandler.bind(null, context, id);
+    const boundLikeHandler = likeHandler.bind(null, context, id);
 
     const likeInfo = {
         isLoggedIn: authApi.isLoggedIn(),
@@ -29,7 +29,7 @@ async function getView(context) {
         totalLikes: await bookService.getBookLikes(id)
     }
 
-    context.renderView(detailsTemplate(book, isOwner, likeInfo, bindedLikeHandler));
+    context.renderView(detailsTemplate(book, isOwner, likeInfo, boundLikeHandler));
 }
 
 export default {

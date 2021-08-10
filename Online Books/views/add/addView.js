@@ -28,8 +28,8 @@ async function submitHandler(context, e) {
 }
 
 function getView(context) {
-    const bindedSubmitHandler = submitHandler.bind(null, context);
-    context.renderView(addTemplate(bindedSubmitHandler));
+    const boundSubmitHandler = submitHandler.bind(null, context);
+    context.renderView(addTemplate(boundSubmitHandler));
 }
 
 export default {
